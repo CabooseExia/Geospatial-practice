@@ -1,6 +1,9 @@
-data/
-province_geojsons/
-assets/
+/data/
+/province_geojsons/
+/assets/
+/Census Report.ipynb
+/HTML Mapping.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
