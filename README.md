@@ -1,5 +1,4 @@
 ```plaintext
-  # Cat
       |\__/,|   (`\
     _.|o o  |_   ) )
   -(((---(((--------
@@ -27,6 +26,9 @@ You'll need the following folders in the root directory:
 ├── data/
 ├── assets/
 ├── .env
+├── citypopulation_webscraper.ipynb
+├── EDA.ipynb
+├── map_maker.ipynb
 ```
 
 ---
@@ -38,6 +40,7 @@ Inside the `data/` folder, place these files:
 - `data.xlsx` — export from Contactous
 - `population.xlsx` — updated from [citypopulation.de](https://www.citypopulation.de)
 - `multiplier.xlsx` — ask for this file if you don’t have it
+- `a file for Arfica SA`*****  —  We shall see if we get the file
 
 ---
 
@@ -49,6 +52,8 @@ Create a `.env` file in the root folder with the following entries:
 GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 GCLOUD_KEY=your_google_cloud_api_key
 ```
+
+GCLOUD_KEY is NOT needed for map_maker.ipynb
 
 #### 🔑 How to get them:
 
