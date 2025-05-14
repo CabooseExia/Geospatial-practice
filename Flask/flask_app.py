@@ -1,7 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session
 from pathlib import Path
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+
+users = { #.env file???
+    "test": "Password1",
+}
 
 app_dir = Path(__file__).parent
 assets_dir = app_dir / "static" /"maps"
@@ -10,10 +15,30 @@ country_list = sorted(
 )
 
 @app.route("/", methods=["GET", "POST"])
-def home():
-    selected_country = request.form.get("country")
-    return render_template("index.html", countries=country_list, selected=selected_country)
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
 
+        if username in users and users[username] == password:
+            session["username"] = username
+            return redirect(url_for("home"))
+        else:
+            return render_template("login.html", error="Invalid credentials")
+
+    return render_template("login.html")
+
+@app.route("/home", methods=["GET", "POST"])
+def home():
+    if "username" not in session:
+        return redirect(url_for("login"))
+    selected_country = request.form.get("country")
+    return render_template("index.html", user=session["username"], countries=country_list, selected=selected_country)
+
+@app.route("/logout")
+def logout():
+    session.pop("username", None)
+    return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=True)
