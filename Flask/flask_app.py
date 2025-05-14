@@ -36,7 +36,7 @@ def login():
 def home():
     if "username" not in session:
         return redirect(url_for("login"))
-    selected_country = request.form.get("country")
+    selected_country = request.form.get("country") or country_list[0]
     return render_template("index.html", user=session["username"], countries=country_list, selected=selected_country)
 
 @app.route("/logout")
