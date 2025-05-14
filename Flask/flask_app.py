@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
+load_dotenv()
 
-users = { #.env file???
-    "test": "Password1",
-}
+USERNAME = os.getenv("ADMIN_USERNAME")
+PASSWORD = os.getenv("ADMIN_PASSWORD")
+
+users = {USERNAME: PASSWORD}
 
 app_dir = Path(__file__).parent
 assets_dir = app_dir / "static" /"maps"
