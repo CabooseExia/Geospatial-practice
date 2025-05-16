@@ -4,11 +4,12 @@ import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+
 load_dotenv()
 
 USERNAME = os.getenv("ADMIN_USERNAME")
 PASSWORD = os.getenv("ADMIN_PASSWORD")
+app.secret_key = os.getenv("SECRET_KEY")
 
 users = {USERNAME: PASSWORD}
 
