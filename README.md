@@ -24,7 +24,9 @@ You'll need the following folders in the root directory:
 /project-root
 │
 ├── data/
+├── dashboard/
 ├── assets/
+├── Flask/
 ├── .env
 ├── citypopulation_webscraper.ipynb
 ├── EDA.ipynb
